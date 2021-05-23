@@ -15,4 +15,4 @@ Part of my "let's build something fun this week" project series.
 ## Credits
 * Powered by the [Pokémon TCG API](https://pokemontcg.io/)
 * Splash image by Thimo Pedersen, via [unsplash](https://unsplash.com/photos/dip9IIwUK6w).
-* Favicon made by [Darius Dan](https://www.flaticon.com/authors/darius-dan) from [www.flaticon.com](https://www.flaticon.com/)
+* Favicon made by [Darius Dan](https://www.flaticon.com/authors/darius-dan) from https://www.flaticon.com
