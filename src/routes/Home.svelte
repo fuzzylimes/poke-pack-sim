@@ -24,7 +24,9 @@ import PackDropdown from "../components/PackDropdown.svelte";
 let selected;
 
 const openPacks = () => {
-    push(`/packs/${selected}`);
+    if (selected) {
+        push(`/packs/${selected}`);
+    }
 }
 </script>
 

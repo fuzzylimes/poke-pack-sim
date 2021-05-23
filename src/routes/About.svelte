@@ -9,6 +9,7 @@
                 <h3 class="title is-3">Credits</h3>
                 <p>Powered by the <a href="https://pokemontcg.io/">Pokémon TCG API</a></p>
                 <p>Splash image by Thimo Pedersen, via <a href="https://unsplash.com/photos/dip9IIwUK6w">unsplash.</a></p>
+                <p>Favicon made by <a href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">Darius Dan</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></p>
             </div>
         </div>
     </div>
