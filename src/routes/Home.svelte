@@ -1,7 +1,3 @@
-<script>
-import PackDropdown from "../components/PackDropdown.svelte";
-
-</script>
 <section class="hero is-fullheight-with-navbar header-image">
     <div class="hero-body">
         <div class="container">
@@ -12,12 +8,25 @@ import PackDropdown from "../components/PackDropdown.svelte";
                     </h1>
                 </div>
                 <div class="column is-full has-text-centered my-3">
-                    <PackDropdown />
+                    <PackDropdown bind:selected/>
+                </div>
+                <div class="column is-full has-text-centered my-3">
+                    <div class="button is-medium is-primary" on:click={openPacks}>Open Packs!</div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+import {push} from 'svelte-spa-router'
+import PackDropdown from "../components/PackDropdown.svelte";
+let selected;
+
+const openPacks = () => {
+    push(`/packs/${selected}`);
+}
+</script>
 
 <style>
     .app-title {

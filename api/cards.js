@@ -3,14 +3,15 @@ const API_KEY = process.env.API_KEY;
 const HEADER = process.env.API_HEADER;
 const HOST = process.env.API_HOST;
 const BASE_URL = "/v2/"
-const SETS = BASE_URL + "sets"
+const CARDS = BASE_URL + "cards?q=set.id:"
 
 module.exports = (req, res) => {
+    const { setId } = req.query;
     const setsReq = https.request({
         hostname: HOST,
         port: 443,
         method: 'GET',
-        path: SETS,
+        path: `${CARDS}${setId}`,
         timeout: 2000,
         headers: {
             [HEADER]: API_KEY
@@ -22,23 +23,23 @@ module.exports = (req, res) => {
         })
         resp.on('end', () => {
             payload = JSON.parse(data).data;
-            payload = payload.filter(set => set.total > 50);
-            payload = payload.map(function (set) {
+            payload = payload.map(function (card) {
                 return {
-                    id: set.id,
-                    name: set.name,
-                    series: set.series,
-                    total: set.total,
-                    images: set.images
+                    id: card.id,
+                    name: card.name,
+                    supertype: card.supertype,
+                    number: card.number,
+                    rarity: card.rarity,
+                    images: card.images
                 }
             });
-            payload = payload.reduce((groups, set) => {
-                let group = (groups[set.series] || []);
-                group.push(set);
-                groups[set.series] = group;
+            payload = payload.reduce((groups, card) => {
+                let group = (groups[card.rarity] || []);
+                group.push(card);
+                groups[card.rarity] = group;
                 return groups
             }, {});
-            res.status(200).send({data:payload});
+            res.status(200).send(payload);
         })
     }).on("error", err => {
         console.error(err);
